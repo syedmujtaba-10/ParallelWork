@@ -26,10 +26,10 @@ export async function loginUser(
 }
 
 export async function getCurrentUser(token: string): Promise<User> {
-  const response = await apiClient.get<User>('/api/auth/me', {
+  const response = await apiClient.get<{ success: boolean; user: User }>('/api/auth/me', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  return response.data;
+  return response.data.user;
 }
