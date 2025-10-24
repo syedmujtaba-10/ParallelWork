@@ -1,0 +1,34 @@
+{
+  "name": "flight-booking-multi-agent",
+  "version": "1.0.0",
+  "description": "Multi-agent flight booking system using LangGraph, OpenAI, TypeScript, Next.js, and Express.js",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "database"
+  ],
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "seed": "cd database && npm run seed",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install && cd ../database && npm install",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build"
+  },
+  "keywords": [
+    "langgraph",
+    "openai",
+    "multi-agent",
+    "flight-booking",
+    "typescript",
+    "nextjs",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syedmujtaba-10/ParallelWork.git"
+  }
+}
