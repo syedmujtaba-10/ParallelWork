@@ -38,7 +38,7 @@ export const useAuthStore = create<AuthState>()(
           });
         } catch (error) {
           const errorMessage = error instanceof Error && 'response' in error
-            ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Login failed'
+            ? (error as { response?: { data?: { error?: string } } }).response?.data?.error || 'Login failed'
             : 'Login failed';
           set({
             isLoading: false,
@@ -61,7 +61,7 @@ export const useAuthStore = create<AuthState>()(
           });
         } catch (error) {
           const errorMessage = error instanceof Error && 'response' in error
-            ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Registration failed'
+            ? (error as { response?: { data?: { error?: string } } }).response?.data?.error || 'Registration failed'
             : 'Registration failed';
           set({
             isLoading: false,

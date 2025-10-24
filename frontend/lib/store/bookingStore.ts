@@ -23,7 +23,7 @@ export const useBookingStore = create<BookingState>((set) => ({
       set({ bookings, isLoading: false });
     } catch (error) {
       const errorMessage = error instanceof Error && 'response' in error
-        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Failed to fetch bookings'
+        ? (error as { response?: { data?: { error?: string } } }).response?.data?.error || 'Failed to fetch bookings'
         : 'Failed to fetch bookings';
       set({
         isLoading: false,
@@ -40,7 +40,7 @@ export const useBookingStore = create<BookingState>((set) => ({
       return booking;
     } catch (error) {
       const errorMessage = error instanceof Error && 'response' in error
-        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Failed to fetch booking'
+        ? (error as { response?: { data?: { error?: string } } }).response?.data?.error || 'Failed to fetch booking'
         : 'Failed to fetch booking';
       set({
         isLoading: false,

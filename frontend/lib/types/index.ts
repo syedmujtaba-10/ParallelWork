@@ -1,12 +1,14 @@
 // User types
 export interface User {
-  _id: string;
+  id: string;         // Backend uses "id" not "_id"
+  _id?: string;       // Keep for compatibility
   name: string;
   email: string;
   createdAt: string;
 }
 
 export interface AuthResponse {
+  success: boolean;
   user: User;
   token: string;
 }
@@ -48,15 +50,19 @@ export interface Flight {
 
 // API response types
 export interface ChatResponse {
-  message: string;
-  booking?: Booking;
+  success: boolean;
+  reply: string;           // Backend uses "reply" not "message"
+  agentType?: string;
+  bookingData?: Booking;   // Backend uses "bookingData" not "booking"
 }
 
 export interface BookingsResponse {
+  success: boolean;
+  count: number;
   bookings: Booking[];
 }
 
 export interface ErrorResponse {
+  success: boolean;
   error: string;
-  message: string;
 }

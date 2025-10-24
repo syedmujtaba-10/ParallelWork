@@ -36,10 +36,10 @@ export const useChatStore = create<ChatState>((set) => ({
 
       const agentMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: response.message,
+        text: response.reply,           // Backend uses "reply" not "message"
         sender: 'agent',
         timestamp: new Date(),
-        bookingData: response.booking,
+        bookingData: response.bookingData,  // Backend uses "bookingData" not "booking"
       };
 
       set((state) => ({
@@ -48,7 +48,7 @@ export const useChatStore = create<ChatState>((set) => ({
       }));
     } catch (error) {
       const errorMessage = error instanceof Error && 'response' in error
-        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Failed to send message'
+        ? (error as { response?: { data?: { error?: string } } }).response?.data?.error || 'Failed to send message'
         : 'Failed to send message';
       set({
         isLoading: false,
